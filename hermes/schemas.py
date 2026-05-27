@@ -9,7 +9,8 @@ from pydantic import BaseModel, Field
 class WorkerTarget(str, Enum):
     gemini = "gemini"
     groq = "groq"
-    local = "local"
+    lmstudio = "lmstudio"   # LM Studio / LM Link (OpenAI-compat, localhost:1234)
+    local = "local"          # bare Ollama fallback
 
 
 class UserMessage(BaseModel):
@@ -43,3 +44,4 @@ class HealthResponse(BaseModel):
     status: str
     ollama_reachable: bool
     chroma_reachable: bool
+    lmstudio_reachable: bool = False
